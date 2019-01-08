@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Your name is " + names.get(position   ), Toast.LENGTH_LONG).show();
             }
         });
-
+sss
         //Enlazamos con nuestro adaptador.
         MyAdapter myAdapter = new MyAdapter(this, R.layout.list_item, names);
         listView.setAdapter(myAdapter);
