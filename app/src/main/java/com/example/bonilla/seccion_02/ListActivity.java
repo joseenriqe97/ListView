@@ -2,6 +2,9 @@ package com.example.bonilla.seccion_02;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -13,6 +16,9 @@ import java.util.List;
 public class ListActivity extends AppCompatActivity {
     private ListView listView;
     private List<String> names;
+    private MyAdapter myAdapter
+    private  int counter = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,13 +47,6 @@ public class ListActivity extends AppCompatActivity {
         names.add("Jose Enrique");
         names.add("Pedro");
         names.add("Juan");
-        names.add("Felipe");
-        names.add("Jose Enrique");
-        names.add("Pedro");
-        names.add("Juan");
-        names.add("Felipe");
-
-
 
        //Adaptador, la forma visual en que mostraremos los datos.
         // ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names); //Se le pasa el layaout que queremo que renderice en la vista.
@@ -62,8 +61,31 @@ public class ListActivity extends AppCompatActivity {
             }
         });
         //Enlazamos con nuestro adaptador.
-        MyAdapter myAdapter = new MyAdapter(this, R.layout.list_item, names);
+        myAdapter = new MyAdapter(this, R.layout.list_item, names);
         listView.setAdapter(myAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.action_bar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.add_item:
+                // Añadimos nuevo nombre.
+                this.names.add("Added n° " +(++counter));
+                // Notificamos al adaptador del cambio producido.
+                this.myAdapter.notifyDataSetChanged();
+                return true;
+             default:
+                 return super.onOptionsItemSelected(item);
+        }
+
+        //return super.onOptionsItemSelected(item);
     }
 }
 
