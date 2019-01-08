@@ -3,17 +3,14 @@ package com.example.bonilla.seccion_02;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class ListActivity extends AppCompatActivity {
     private ListView listView;
     private List<String> names;
     @Override
@@ -61,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "Your name is " + names.get(position   ), Toast.LENGTH_LONG).show();
+                Toast.makeText(ListActivity.this, "Your name is " + names.get(position   ), Toast.LENGTH_LONG).show();
             }
         });
         //Enlazamos con nuestro adaptador.
