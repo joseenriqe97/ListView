@@ -16,7 +16,7 @@ import java.util.List;
 public class ListActivity extends AppCompatActivity {
     private ListView listView;
     private List<String> names;
-    private MyAdapter myAdapter
+    private MyAdapter myAdapter;
     private  int counter = 0;
 
     @Override
@@ -32,21 +32,7 @@ public class ListActivity extends AppCompatActivity {
         names.add("Pedro");
         names.add("Juan");
         names.add("Felipe");
-        names.add("Jose Enrique");
-        names.add("Pedro");
-        names.add("Juan");
-        names.add("Felipe");
-        names.add("Jose Enrique");
-        names.add("Pedro");
-        names.add("Juan");
-        names.add("Felipe");
-        names.add("Jose Enrique");
-        names.add("Pedro");
-        names.add("Juan");
-        names.add("Felipe");
-        names.add("Jose Enrique");
-        names.add("Pedro");
-        names.add("Juan");
+
 
        //Adaptador, la forma visual en que mostraremos los datos.
         // ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names); //Se le pasa el layaout que queremo que renderice en la vista.
@@ -65,27 +51,5 @@ public class ListActivity extends AppCompatActivity {
         listView.setAdapter(myAdapter);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.action_bar_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.add_item:
-                // Añadimos nuevo nombre.
-                this.names.add("Added n° " +(++counter));
-                // Notificamos al adaptador del cambio producido.
-                this.myAdapter.notifyDataSetChanged();
-                return true;
-             default:
-                 return super.onOptionsItemSelected(item);
-        }
-
-        //return super.onOptionsItemSelected(item);
-    }
 }
 
